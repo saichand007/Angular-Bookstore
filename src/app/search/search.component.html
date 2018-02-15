@@ -1,0 +1,44 @@
+<div class="container">
+  <div class="m-3 text-center">
+    <form class="form-inline" (ngSubmit)="doSearch()">
+      <div class="form-group"  >
+        <input
+               type="search"
+               class="form-control"
+               placeholder="Enter search string"
+               name="search"
+               [(ngModel)]="term"
+              required >
+      </div>
+      <button type="submit"
+              class="btn btn-primary">
+        Search
+      </button>
+    </form>
+    <hr />
+
+    <div class="text-center">
+  
+      <p class="lead" *ngIf="service. initialised && service.loading ">Loading...</p>
+
+     
+      <p class="lead"  *ngIf="service. initialised && !service.loading  && service.books.length===0">No results returned</p>
+
+     
+      <p class="lead"  *ngIf=" !service. initialised">Enter a search string above and press search</p>
+    </div>
+  </div>
+
+  <!-- TODO: Show the results of the search -->
+  <!--app-book-list></app-book-list-->
+<ul  >
+  <li *ngFor="let books of service.books">{{books.title}}</li>
+</ul>
+  <div class="d-flex justify-content-center">
+    <!-- TODO: Show pagnation -->
+    <app-pager [page]='service.page'
+    [totalPages]='service.totalPages'
+    (changePage)='service.page=$event'>
+    </app-pager>
+  </div>
+</div>

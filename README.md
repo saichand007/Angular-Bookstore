@@ -1,1 +1,1 @@
-# Angular-Bookstore
+# Angular-Bookstore App
